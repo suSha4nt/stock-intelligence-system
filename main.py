@@ -16,7 +16,7 @@ def get_stock(symbol: str):
         if data is None or data.empty:
             return {"error": "No data found"}
 
-        #Flatten multi-index columns
+        # Flatten multi-index columns
         data.columns = [col[0] for col in data.columns]
 
         data = data.tail().reset_index()
@@ -39,7 +39,7 @@ def get_signal(symbol: str):
     if data.empty:
         return {"error": "No data found"}
 
-    # 🔥 Fix multi-index columns
+    # Fix multi-index columns
     if isinstance(data.columns, pd.MultiIndex):
         data.columns = data.columns.get_level_values(0)
 
