@@ -16,7 +16,7 @@ def get_stock(symbol: str):
         if data is None or data.empty:
             return {"error": "No data found"}
 
-        # 🔥 FIX: Flatten multi-index columns
+        #Flatten multi-index columns
         data.columns = [col[0] for col in data.columns]
 
         data = data.tail().reset_index()
